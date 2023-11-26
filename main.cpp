@@ -14,35 +14,66 @@ using std::vector;
 
 int main() {
     // Create a Student object
-    Student student;
+    // Student student;
 
-    // Set attributes for the student
-    student.set_name("John");
-    student.set_surname("Doe");
-    student.set_examMark(8);
+    // // Set attributes for the student
+    // student.set_name("John");
+    // student.set_surname("Doe");
+    // student.set_examMark(8);
 
-    // Add marks using set_marks function (assuming marks are added this way)
-    std::vector<int> marks = {9, 10, 6}; // Example marks
-    student.set_marks(marks);
+    // // Add marks using set_marks function (assuming marks are added this way)
+    // std::vector<int> marks = {9, 10, 6}; // Example marks
+    // student.set_marks(marks);
 
-    // Calculate the final mark
-    float finalMark = calculateFinalMarkAvg(student);
+    // // Calculate the final mark
+    // float finalMark = calculateFinalMarkAvg(student);
 
-    // Assign the calculated final mark directly to the public finalMark variable
-    student.finalMark = finalMark;
+    // // Assign the calculated final mark directly to the public finalMark variable
+    // student.finalMark = finalMark;
 
-    // Display student information and final mark
-    std::cout << "Student Name: " << student.get_name() << std::endl;
-    std::cout << "Student Surname: " << student.get_surname() << std::endl;
-    std::cout << "Student Exam Mark: " << student.get_examMark() << std::endl;
+    // // Display student information and final mark
+    // std::cout << "Student Name: " << student.get_name() << std::endl;
+    // std::cout << "Student Surname: " << student.get_surname() << std::endl;
+    // std::cout << "Student Exam Mark: " << student.get_examMark() << std::endl;
 
-    std::cout << "Student Marks: ";
-    for (int mark : student.get_marks()) {
-        std::cout << mark << " ";
+    // std::cout << "Student Marks: ";
+    // for (int mark : student.get_marks()) {
+    //     std::cout << mark << " ";
+    // }
+    // std::cout << std::endl;
+
+    // std::cout << "Final Mark: " << student.finalMark << std::endl;
+
+    // return 0;
+
+    // Students information will be read from files and sorted out.
+    vector<Student> students;
+    string filename = "kursiokai.txt";
+
+    // Read student data from the file
+    readStudentsFromFileVector(filename, students);
+
+    
+    // Calculate Final Mark based on Average and Median of marks
+    for (size_t i = 0; i < students.size(); ++i)
+    {
+        Student &student = students[i];
+
+        // Calculate Final Mark based on Average
+        student.finalMarkAvg = calculateFinalMarkAvg(student);
+
+        // Calculate Final Mark based on Median
+        student.finalMarkMed = calculateFinalMarkMed(student);
     }
-    std::cout << std::endl;
 
-    std::cout << "Final Mark: " << student.finalMark << std::endl;
+    // Sort the students vector
+    sort(students.begin(), students.end(), compareStudents);
+
+    // Displaying a table of results
+    printStudentTableAvgMed(students);
+
+    // For testing purposes
+    cout << "Total number of lines read: " << students.size() + 1 << " (including header)" << endl;
 
     return 0;
 }
@@ -124,41 +155,41 @@ int main() {
 //     }
 
 //     else if (choice == 2) {
-//         // Students information will be read from files and sorted out.
-//         vector<Student> students;
-//         string filename = "kursiokai.txt";
+        // // Students information will be read from files and sorted out.
+        // vector<Student> students;
+        // string filename = "kursiokai.txt";
 
-//         auto start = std::chrono::high_resolution_clock::now(); // Start measuring time
+        // auto start = std::chrono::high_resolution_clock::now(); // Start measuring time
 
-//         // Read student data from the file
-//         readStudentsFromFileVector(filename, students);
+        // // Read student data from the file
+        // readStudentsFromFileVector(filename, students);
 
-//         auto end = std::chrono::high_resolution_clock::now(); // Stop measuring time
-//         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+        // auto end = std::chrono::high_resolution_clock::now(); // Stop measuring time
+        // auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
         
-//         // Calculate Final Mark based on Average and Median of marks
-//         for (size_t i = 0; i < students.size(); ++i)
-//         {
-//             Student &student = students[i];
+        // // Calculate Final Mark based on Average and Median of marks
+        // for (size_t i = 0; i < students.size(); ++i)
+        // {
+        //     Student &student = students[i];
 
-//             // Calculate Final Mark based on Average
-//             student.finalMarkAvg = calculateFinalMarkAvg(student);
+        //     // Calculate Final Mark based on Average
+        //     student.finalMarkAvg = calculateFinalMarkAvg(student);
 
-//             // Calculate Final Mark based on Median
-//             student.finalMarkMed = calculateFinalMarkMed(student);
-//         }
+        //     // Calculate Final Mark based on Median
+        //     student.finalMarkMed = calculateFinalMarkMed(student);
+        // }
 
-//         // Sort the students vector
-//         sort(students.begin(), students.end(), compareStudents);
+        // // Sort the students vector
+        // sort(students.begin(), students.end(), compareStudents);
 
-//         // Displaying a table of results
-//         printStudentTableAvgMed(students);
+        // // Displaying a table of results
+        // printStudentTableAvgMed(students);
 
-//         // For testing purposes
-//         cout << "Total number of lines read: " << students.size() + 1 << " (including header)" << endl;
-//         cout << "Time taken to read the file: " << duration.count() << " microseconds" << endl;
+        // // For testing purposes
+        // cout << "Total number of lines read: " << students.size() + 1 << " (including header)" << endl;
+        // cout << "Time taken to read the file: " << duration.count() << " microseconds" << endl;
 
-//         return 0;
+        // return 0;
 //     }
 
 //     else if (choice == 3)

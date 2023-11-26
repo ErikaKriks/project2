@@ -31,6 +31,7 @@ using std::uniform_int_distribution;
 using std::ofstream;
 using std::left;
 using std::setw;
+using std::istringstream;
 
 // NEW
 
@@ -86,6 +87,99 @@ float calculateFinalMarkMed(const Student &student) {
     // Calculate the final mark using the formula: 0.4 * median + 0.6 * exam
     return 0.4 * median + 0.6 * student.get_examMark();
 }
+
+void readStudentsFromFileVector(const string &filename, vector<Student> &students) {
+    // Construct the full path to the file in the "datafiles" folder
+    std::__fs::filesystem::path dataFolderPath = "./datafiles";
+    std::__fs::filesystem::path filePath = dataFolderPath / filename;
+    
+    try {
+        if (filename.empty()) {
+            throw invalid_argument("Error: File name not provided.");
+        }
+
+        ifstream inputFile(filePath); // Open the file
+
+        if (!inputFile.is_open()) {
+            throw runtime_error("Error: Unable to open the file.");
+        }
+
+        string line;
+        bool firstLine = true; // Skip the first line with headers
+        int lineCount = 0;
+
+        while (getline(inputFile, line)) {
+            ++lineCount;
+
+            if (firstLine) {
+                firstLine = false;
+                continue; // Skip the header line
+            }
+
+            Student student;
+            istringstream iss(line);
+            string name, surname;
+            int mark;
+
+            iss >> name >> surname;
+            student.set_name(name);
+            student.set_surname(surname);
+
+            // Store all marks including the last one as the exam mark
+            vector<int> marks;
+            while (iss >> mark) {
+                marks.push_back(mark);
+            }
+
+            if (!marks.empty()) {
+                student.set_examMark(marks.back()); // Set the last mark as the exam mark
+                marks.pop_back(); // Remove the last element (exam mark) from marks
+            }
+
+            // Assign the remaining marks (excluding the last one as it's the exam mark)
+            student.set_marks(marks);
+
+            students.push_back(student);
+        }
+
+        inputFile.close();
+    } catch (const std::invalid_argument &e) {
+        cerr << e.what() << std::endl;
+        cout << "File not provided." << std::endl;
+    } catch (const std::runtime_error &e) {
+        cerr << e.what() << std::endl;
+        cout << "Error opening a file: " << e.what() << std::endl;
+    }
+}
+
+void printStudentTableAvgMed(const vector<Student> &students)
+{
+    // Print the table header
+    printf("%-20s%-20s%-20s%-20s\n", "Name", "Surname", "Final Mark (Avg.)", "Final Mark (Med.)");
+    printf("-----------------------------------------------------------------------------\n");
+
+    // Print student data in a table
+    for (const Student &student : students)
+    {
+        printf("%-20s%-20s%-20.2f%-20.2f\n", student.get_name().c_str(), student.get_surname().c_str(), student.finalMarkAvg, student.finalMarkMed);
+    }
+
+    // Print the table footer
+    printf("-----------------------------------------------------------------------------\n");
+}
+
+bool compareStudents(const Student &student1, const Student &student2) {
+    // Compare by name
+    int nameComparison = student1.get_name().compare(student2.get_name());
+    if (nameComparison != 0) {
+        return nameComparison < 0;
+    }
+    
+    // If names are equal, compare by surname
+    return student1.get_surname().compare(student2.get_surname()) < 0;
+}
+
+
 
 
 // OLD
@@ -326,36 +420,36 @@ float calculateFinalMarkMed(const Student &student) {
 //             throw runtime_error("Error: Unable to open the file.");
 //         }
 
-//         string line;
-//         bool firstLine = true; // Skip the first line with headers
-//         int lineCount = 0;
+        // string line;
+        // bool firstLine = true; // Skip the first line with headers
+        // int lineCount = 0;
 
-//         while (getline(inputFile, line))
-//         {
-//             ++lineCount;
+        // while (getline(inputFile, line))
+        // {
+        //     ++lineCount;
 
-//             if (firstLine)
-//             {
-//                 firstLine = false;
-//                 continue; // Skip the header line
-//             }
+        //     if (firstLine)
+        //     {
+        //         firstLine = false;
+        //         continue; // Skip the header line
+        //     }
 
-//             Student student;
-//             std::istringstream iss(line);
-//             string name, surname;
-//             int mark;
+        //     Student student;
+        //     std::istringstream iss(line);
+        //     string name, surname;
+        //     int mark;
 
-//             iss >> student.name >> student.surname;
+        //     iss >> student.name >> student.surname;
 
-//             while (iss >> mark)
-//             {
-//                 student.marks.push_back(mark);
-//             }
+        //     while (iss >> mark)
+        //     {
+        //         student.marks.push_back(mark);
+        //     }
 
-//             // Assign the last value in marks as the exam mark
-//             if (!student.marks.empty())
-//             {
-//                 student.examMark = student.marks.back();
+        //     // Assign the last value in marks as the exam mark
+        //     if (!student.marks.empty())
+        //     {
+        //         student.examMark = student.marks.back();
 //                 student.marks.pop_back(); // Remove the last element from marks
 //             }
 
@@ -375,8 +469,7 @@ float calculateFinalMarkMed(const Student &student) {
 //     } catch (const runtime_error &e) {
 //         cerr << e.what() << endl;
 //         cout << "Error opening a file: " << e.what() << endl;
-// }
-
+//     }
 // }
 
 // void readStudentsFromFileList(const string &filename, list<Student> &students)
