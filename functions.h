@@ -4,6 +4,7 @@
 #include <string>
 #include <list>
 #include <vector>
+#include "student.h"
 
 using std::string;
 using std::list;
