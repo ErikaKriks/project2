@@ -43,23 +43,61 @@ int main() {
         auto endReading = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> readingTime = endReading - startReading;
             
+        // // Categorization
+        // auto startCategorization = std::chrono::high_resolution_clock::now();
+        // vector<Student> failStudents;
+        // vector<Student> passStudents;
+
+        // for (const Student& student : readStudents) {
+        //     float finalMark = calculateFinalMarkAvg(student); // You can use either Avg or Med function
+        //     if (finalMark < 5.0) {
+        //         failStudents.push_back(student);
+        //     } else {
+        //         passStudents.push_back(student);
+        //     }
+        // }
+
+        // // Sort the failStudents and passStudents vectors
+        // sort(failStudents.begin(), failStudents.end(), compareStudents);
+        // sort(passStudents.begin(), passStudents.end(), compareStudents);
+        // auto endCategorization = std::chrono::high_resolution_clock::now();
+        // categorizationTime = endCategorization - startCategorization;
+
+        // // Saving categorized data
+        // auto startSavingCategorized = std::chrono::high_resolution_clock::now();
+        // string filenameFail = "students" + to_string(numStudents) + "_fail.txt";
+        // string filenamePass = "students" + to_string(numStudents) + "_pass.txt";
+
+        // saveStudentDataToFileVector(filenameFail, failStudents);
+        // saveStudentDataToFileVector(filenamePass, passStudents);
+        // auto endSavingCategorized = std::chrono::high_resolution_clock::now();
+        // savingCategorizedTime = endSavingCategorized - startSavingCategorized;
+            
+
+        
         // Categorization
         auto startCategorization = std::chrono::high_resolution_clock::now();
         vector<Student> failStudents;
-        vector<Student> passStudents;
 
-        for (const Student& student : readStudents) {
-            float finalMark = calculateFinalMarkAvg(student); // You can use either Avg or Med function
-            if (finalMark < 5.0) {
+        for (auto it = readStudents.begin(); it != readStudents.end();)
+        {
+            Student &student = *it;
+            student.finalMark = calculateFinalMarkAvg(student);
+
+            if (student.finalMark < 5.0)
+            {
                 failStudents.push_back(student);
-            } else {
-                passStudents.push_back(student);
+                it = readStudents.erase(it); 
+            }
+            else
+            {
+                ++it;
             }
         }
 
-        // Sort the failStudents and passStudents vectors
+        // Sort the Students vector
         sort(failStudents.begin(), failStudents.end(), compareStudents);
-        sort(passStudents.begin(), passStudents.end(), compareStudents);
+        sort(readStudents.begin(), readStudents.end(), compareStudents);
         auto endCategorization = std::chrono::high_resolution_clock::now();
         categorizationTime = endCategorization - startCategorization;
 
@@ -68,52 +106,14 @@ int main() {
         string filenameFail = "students" + to_string(numStudents) + "_fail.txt";
         string filenamePass = "students" + to_string(numStudents) + "_pass.txt";
 
+
+        // Save failStudents to the file
         saveStudentDataToFileVector(filenameFail, failStudents);
-        saveStudentDataToFileVector(filenamePass, passStudents);
+        saveStudentDataToFileVector(filenamePass, readStudents);
+
         auto endSavingCategorized = std::chrono::high_resolution_clock::now();
         savingCategorizedTime = endSavingCategorized - startSavingCategorized;
-            
-
-            // else if (choice3 == 2) {
-            //     // Categorization
-            //     auto startCategorization = std::chrono::high_resolution_clock::now();
-            //     vector<Student> failStudents;
-
-            //     for (auto it = readStudents.begin(); it != readStudents.end();)
-            //     {
-            //         Student &student = *it;
-            //         student.finalMark = calculateFinalMarkAvg(student);
-
-            //         if (student.finalMark < 5.0)
-            //         {
-            //             failStudents.push_back(student);
-            //             it = readStudents.erase(it); 
-            //         }
-            //         else
-            //         {
-            //             ++it;
-            //         }
-            //     }
-
-            //     // Sort the Students vector
-            //     sort(failStudents.begin(), failStudents.end(), compareStudents);
-            //     sort(readStudents.begin(), readStudents.end(), compareStudents);
-            //     auto endCategorization = std::chrono::high_resolution_clock::now();
-            //     categorizationTime = endCategorization - startCategorization;
-
-            //     // Saving categorized data
-            //     auto startSavingCategorized = std::chrono::high_resolution_clock::now();
-            //     string filenameFail = "students" + to_string(numStudents) + "_fail.txt";
-            //     string filenamePass = "students" + to_string(numStudents) + "_pass.txt";
-
-
-            //     // Save failStudents to the file
-            //     saveStudentDataToFileVector(filenameFail, failStudents);
-            //     saveStudentDataToFileVector(filenamePass, readStudents);
-
-            //     auto endSavingCategorized = std::chrono::high_resolution_clock::now();
-            //     savingCategorizedTime = endSavingCategorized - startSavingCategorized;
-            // }
+        
 
             // else if (choice3 == 3) {
             //     // Strategy 3
