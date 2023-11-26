@@ -34,6 +34,9 @@ public:
     void set_surname(const string& surname);
     void set_examMark(int examMark);
     void set_marks(const vector<int>& marks);
+    
+    // Other methods
+    inline void add_mark(int mark) {marks.push_back(mark);}
 
     // Public members for final marks
     float finalMarkAvg;

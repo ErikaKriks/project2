@@ -179,6 +179,67 @@ bool compareStudents(const Student &student1, const Student &student2) {
     return student1.get_surname().compare(student2.get_surname()) < 0;
 }
 
+// Function to generate a random student name
+string generateRandomName(int studentNumber) {
+    return "Vardas" + to_string(studentNumber);
+}
+
+
+// Function to generate a random student surname
+string generateRandomSurname(int studentNumber) {
+    return "Pavarde" + to_string(studentNumber);
+}
+
+
+// Function to generate random individual marks between 1 and 10
+int generateRandomMark() {
+    static default_random_engine generator(time(0));
+    uniform_int_distribution<int> markDistribution(1, 10);
+    return markDistribution(generator);
+}
+
+
+Student generateRandomStudent(int studentNumber, int numMarks) {
+    Student student;
+    student.set_name(generateRandomName(studentNumber));
+    student.set_surname(generateRandomSurname(studentNumber));
+    student.set_examMark(generateRandomMark()); // Random exam mark between 1 and 10
+
+    for (int i = 0; i < numMarks; ++i) {
+        student.add_mark(generateRandomMark()); // Random individual marks between 1 and 10
+    }
+
+    return student;
+}
+
+void saveStudentDataToFileVector(const string &filename, const vector<Student> &students) {
+    // Construct the full path to the file in the "datafiles" folder
+    std::__fs::filesystem::path dataFolderPath = "./datafiles";
+    std::__fs::filesystem::path filePath = dataFolderPath / filename;
+
+    ofstream file(filePath); // Open the file
+
+    if (file.is_open()) {
+        file << left << setw(24) << "Vardas" << setw(24) << "Pavarde";
+        for (int i = 1; i <= 15; ++i) {
+            file << left << setw(9) << "ND" + to_string(i);
+        }
+        file << "Egz." << endl;
+
+        for (const Student& student : students) {
+            file << left << setw(24) << student.get_name() << setw(24) << student.get_surname();
+            for (int mark : student.get_marks()) {
+                file << left << setw(9) << mark;
+            }
+            file << student.get_examMark() << endl;
+        }
+
+        file.close();
+    } else {
+        cout << "Error: Could not open file for writing." << endl;
+    }
+}
+
 
 
 
