@@ -24,5 +24,6 @@ int generateRandomMark();
 Student generateRandomStudent(int studentNumber, int numMarks);
 void saveStudentDataToFileVector(const string &filename, const vector<Student> &students);
 int usersChoiceStrategy();
+int usersChoiceAvgMed();
 
 #endif // FUNCTIONS_H_INCLUDED

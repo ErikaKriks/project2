@@ -18,10 +18,12 @@ using std::to_string;
 
 int main() {
     int choice;
+    int choice1; // Average or Median
+    choice1 = usersChoiceAvgMed();
     choice = usersChoiceStrategy();
 
-    // vector<int> numStudentsList = {1000, 10000, 100000, 1000000, 10000000};
-    vector<int> numStudentsList = {10, 100}; // For testing purposes
+    vector<int> numStudentsList = { 100000, 1000000};
+    // vector<int> numStudentsList = {10, 100}; // For testing purposes
         
     // Defining time variables used in both strategies
     std::chrono::duration<double> categorizationTime;
@@ -47,16 +49,28 @@ int main() {
         auto endReading = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> readingTime = endReading - startReading;
 
-        if (choice == 0) {
+        if (choice == 1) {
         // Strategy 1  
         // // Categorization
             auto startCategorization = std::chrono::high_resolution_clock::now();
             vector<Student> failStudents;
             vector<Student> passStudents;
 
-            for (const Student& student : readStudents) {
-                float finalMark = calculateFinalMarkAvg(student); // You can use either Avg or Med function
-                if (finalMark < 5.0) {
+            for (Student& student : readStudents) {
+                
+                if (choice1 == 0) {
+                    student.finalMark = calculateFinalMarkAvg(student);                  
+                }
+                else if (choice1 == 1)
+                {
+                    student.finalMark = calculateFinalMarkMed(student);
+                }
+                else {
+                    cout << "Invalid choice. Exiting..." << endl;
+                    return 1;
+                }
+                
+                if (student.finalMark < 5.0) {
                     failStudents.push_back(student);
                 } else {
                     passStudents.push_back(student);
@@ -80,7 +94,7 @@ int main() {
             savingCategorizedTime = endSavingCategorized - startSavingCategorized;
         }
 
-        else if (choice == 1) {
+        else if (choice == 2) {
             // Strategy 2
             // Categorization
             auto startCategorization = std::chrono::high_resolution_clock::now();
@@ -89,7 +103,18 @@ int main() {
             for (auto it = readStudents.begin(); it != readStudents.end();)
             {
                 Student &student = *it;
-                student.finalMark = calculateFinalMarkAvg(student);
+                // student.finalMark = calculateFinalMarkAvg(student);
+                if (choice1 == 0) {
+                    student.finalMark = calculateFinalMarkAvg(student);                  
+                }
+                else if (choice1 == 1)
+                {
+                    student.finalMark = calculateFinalMarkMed(student);
+                }
+                else {
+                    cout << "Invalid choice. Exiting..." << endl;
+                    return 1;
+                }
 
                 if (student.finalMark < 5.0)
                 {
@@ -121,6 +146,13 @@ int main() {
             auto endSavingCategorized = std::chrono::high_resolution_clock::now();
             savingCategorizedTime = endSavingCategorized - startSavingCategorized;
         }
+
+        else
+        {
+            cout << "Invalid choice. Exiting..." << endl;
+            return 1; 
+        }
+
         // Output
         cout << "Execution times for " << numStudents << " students:" << endl;
         cout << "Memory address of the data structure: " << &students << endl;
@@ -132,4 +164,5 @@ int main() {
     }
         
     return 0;
+
 }
