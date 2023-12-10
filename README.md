@@ -72,7 +72,7 @@ Script updated including Rule of Three and overwritten input/output methods.
 
 **Additional Functionalities**
 * Overloaded Stream Operators: Implements operator<< and operator>> for customized input and output stream operations. Input method works manually, output prints students data to the terminal.
-![Alt text](image.png)
+
 
 ### [v.1.1](https://github.com/ErikaKriks/project2/tree/v.1.1)
 Script from previous exercise was adapted for the Class data structure.
