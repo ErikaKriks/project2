@@ -3,9 +3,13 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
 using std::string;
 using std::vector;
+using std::ostream;
+using std::fixed;
+using std::endl;
 
 class Student {
 private:
@@ -46,6 +50,15 @@ public:
             finalMark = other.finalMark;
         }
         return *this;
+    }
+
+    // Overloading stream insertion operator <<
+    friend ostream& operator<<(ostream& os, const Student& student) {
+        os << left << setw(20) << student.get_name() << setw(20)
+           << student.get_surname() << setw(20) << fixed << std::setprecision(2)
+           << student.finalMarkAvg << setw(20) << fixed << std::setprecision(2)
+           << student.finalMarkMed << endl;
+        return os;
     }   
 
 
