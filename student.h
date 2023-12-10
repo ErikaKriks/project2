@@ -24,6 +24,19 @@ public:
         this->marks = marks;
     };
 
+    // Copy Constructor
+    Student(const Student& other) :
+        name(other.name),
+        surname(other.surname),
+        examMark(other.examMark),
+        marks(other.marks),
+        finalMarkAvg(other.finalMarkAvg),
+        finalMarkMed(other.finalMarkMed),
+        finalMark(other.finalMark) {}
+
+     
+
+
     // Getter and Setter functions
     inline string get_name() const {return name;};
     inline string get_surname() const {return surname;};
