@@ -4,12 +4,15 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <iomanip>
 
 using std::string;
 using std::vector;
 using std::ostream;
+using std::istream;
 using std::fixed;
 using std::endl;
+using std::cout;
 
 class Student {
 private:
@@ -17,6 +20,7 @@ private:
     string surname;
     int examMark;
     vector<int> marks;
+
 
 public:
     // Constructors
@@ -53,12 +57,31 @@ public:
     }
 
     // Overloading stream insertion operator <<
-    friend ostream& operator<<(ostream& os, const Student& student) {
-        os << left << setw(20) << student.get_name() << setw(20)
-           << student.get_surname() << setw(20) << fixed << std::setprecision(2)
-           << student.finalMarkAvg << setw(20) << fixed << std::setprecision(2)
-           << student.finalMarkMed << endl;
-        return os;
+    friend std::ostream& operator<<(std::ostream& os, const Student& student) {
+    os << std::left << std::setw(20) << student.get_name() << std::setw(20)
+       << student.get_surname() << std::setw(20) << std::fixed << std::setprecision(2)
+       << student.finalMarkAvg << std::setw(20) << std::fixed << std::setprecision(2)
+       << student.finalMarkMed << std::endl;
+    return os;
+}
+
+    friend istream& operator>>(istream& is, Student& student) {
+        cout << "Enter name: ";
+        is >> student.name;
+
+        cout << "Enter surname: ";
+        is >> student.surname;
+
+        cout << "Enter exam mark: ";
+        is >> student.examMark;
+
+        cout << "Enter marks (space-separated, enter non-numeric to finish): ";
+        int mark;
+        while (is >> mark) {
+            student.marks.push_back(mark);
+        }
+
+        return is;
     }   
 
 

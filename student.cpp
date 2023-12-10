@@ -22,6 +22,3 @@ void Student::set_examMark(int examMark) {
 void Student::set_marks(const std::vector<int>& marks) {
     this->marks = marks;
 }
-
-
-
