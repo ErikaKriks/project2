@@ -61,6 +61,9 @@ Technical Specifications of Computer:
 
 ## Releases
 ### [v.1.1](https://github.com/ErikaKriks/project2/tree/v.1.1)
+Script updated including Rule of Three and overwritten input/output methods.
+
+### [v.1.1](https://github.com/ErikaKriks/project2/tree/v.1.1)
 Script from previous exercise was adapted for the Class data structure.
 <br>There are choices to calculate final mark based on Average and Median.
 <br>* Students categorization into Pass and Fail groups implemented using 2 strategies:
