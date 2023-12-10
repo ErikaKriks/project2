@@ -34,7 +34,19 @@ public:
         finalMarkMed(other.finalMarkMed),
         finalMark(other.finalMark) {}
 
-     
+    // Copy Assignment Operator
+    Student& operator=(const Student& other) {
+        if (this != &other) {
+            name = other.name;
+            surname = other.surname;
+            examMark = other.examMark;
+            marks = other.marks;
+            finalMarkAvg = other.finalMarkAvg;
+            finalMarkMed = other.finalMarkMed;
+            finalMark = other.finalMark;
+        }
+        return *this;
+    }   
 
 
     // Getter and Setter functions
