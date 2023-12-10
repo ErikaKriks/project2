@@ -60,8 +60,19 @@ Technical Specifications of Computer:
 
 
 ## Releases
-### [v.1.1](https://github.com/ErikaKriks/project2/tree/v.1.1)
+### [v.1.2](https://github.com/ErikaKriks/project2/tree/v.1.2)
 Script updated including Rule of Three and overwritten input/output methods.
+
+**Class Structure**
+* Private Members: Includes name, surname, examMark, marks, and public members for final marks.
+* Constructors: Default constructor and parameterized constructor for initializing member variables.
+* Rule of Three: Implements copy constructor, copy assignment operator, and a destructor.
+* Getter and Setter Methods: For accessing and modifying private members.
+* Other Methods: Includes add_mark() to add marks to the marks vector.
+
+**Additional Functionalities**
+* Overloaded Stream Operators: Implements operator<< and operator>> for customized input and output stream operations. Input method works manually, output prints students data to the terminal.
+![Alt text](image.png)
 
 ### [v.1.1](https://github.com/ErikaKriks/project2/tree/v.1.1)
 Script from previous exercise was adapted for the Class data structure.
