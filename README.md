@@ -62,10 +62,8 @@ Technical Specifications of Computer:
 ## Releases
 ### [v.1.1](https://github.com/ErikaKriks/project2/tree/v.1.1)
 Script from previous exercise was adapted for the Class data structure.
-<br>There are choices to calculate final mark based on Average and Median.
-<br>* Students categorization into Pass and Fail groups implemented using 2 strategies:
-        * Strategy 1 - using two containers Fail and Pass to store information after categorization.
-        * Strategy 2 - using initial container and Fail students container to store data (failing students are added to the new container and removed from the initial container).
+<br>There are choices to choose how output data will be sorted.
+<br>* Students categorization into Pass and Fail groups implemented using strategy number 3, because it eas the fastest in the previous version of the script.
 * Experiment measuring time of each process performed.
 
 
