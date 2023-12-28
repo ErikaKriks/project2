@@ -60,6 +60,14 @@ int main() {
     // Output
     std::cout << "\nDetails of the new student:\n" << newStudent << "\n";
 
+    try {
+        Person person("John", "Doe");
+        std::cout << "\nObject person was created!\n" << std::endl;
+    }
+    catch(const std::bad_alloc& e) {
+        std::cerr << "Error created person object." << e.what() << std::endl;
+    }
+
     return 0;
 }
 
