@@ -72,36 +72,21 @@ Script from previous exercise was adapted for the Class data structure.
 #### Comparison of different Structures
 | Records | Struct | Class |
 |--|--|--|
-| 100 000 | 0.188s  | 0.374s |
-| 1 000 000 | 2.214s | 0.682s |
+| 100 000 | 0.0397s  | 0.191s |
+| 1 000 000 | 0.411s | 1.922s |
 
 
 #### Comparison of Optimization flags
 | Records | no flag | O1| O2 | O3 | 
 |--|--|--|--|--|
-| 100 000 | 0.374s | 0.0587s | 0.0531s | 0.0497s | 
-| 1 000 000 | 0.682s | 0.482s | 0.659s | 0.642s |
+| 100 000 | 0.0246s | 0.0251s | 0.0247s | 0.0240s | 
+| 1 000 000 | 0.253s | 0.253s | 0.253s | 0.254s |
 
 
-#### Comparison of Saving Categorized data
 
-#### Comparison of different Structures
-| Records | Struct | Class |
-|--|--|--|
-| 100 000 | 0.567s  | 0.571s |
-| 1 000 000 | 5.435s | 5.689s |
-
-
-#### Comparison of Optimization flags
-| Records | no flag | O1| O2 | O3 | 
-|--|--|--|--|--|
-| 100 000 | 0.571s | 0.0587s | 0.487s | 0.470s | 
-| 1 000 000 | 5.689s | 5.021s | 4.902s | 4.761s |
-
-Strategy 1 and Vector structure was used for comparison, more information about strategies can be found [here](https://github.com/ErikaKriks/project1/tree/v.1.0).
-Strategy 2 uses erase method, which is computationally expensive as it seems - O(n) complexity, as well modifying vector while iterating might be causing large time of completion.
+Strategy 3 and Vector structure was used for comparison, more information about strategies can be found [here](https://github.com/ErikaKriks/project1/tree/v.1.0).
 <br>Script with Class implementation took more time for every experiment.
-<br>Flag O3 performs best in both cases.
+<br>Flag O3 performs best in case of 100 000 students, in other cases of flags are really close in terms of performance.
 
 
 
