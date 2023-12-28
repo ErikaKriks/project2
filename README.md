@@ -120,4 +120,8 @@ Strategy 2 uses erase method, which is computationally expensive as it seems - O
 <br>Flag O3 performs best in both cases.
 
 
+### [v.1.2](https://github.com/ErikaKriks/project2/releases/tag/v.1.2)
+The Class Student updated according to Rule of Three requirements.
 
+### [v.1.5](https://github.com/ErikaKriks/project2/releases/tag/v.1.5)
+An abstract Class Person introduced.
