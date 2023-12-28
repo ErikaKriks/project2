@@ -22,3 +22,11 @@ void Student::set_examMark(int examMark) {
 void Student::set_marks(const std::vector<int>& marks) {
     this->marks = marks;
 }
+
+string Student::get_name() const {
+    return name;
+}
+
+string Student::get_surname() const {
+    return surname;
+}
