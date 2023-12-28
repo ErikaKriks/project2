@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include "person.h"
 
 using std::string;
 using std::vector;
@@ -14,7 +15,7 @@ using std::fixed;
 using std::endl;
 using std::cout;
 
-class Student {
+class Student : public Person {
 private:
     string name;
     string surname;
@@ -23,6 +24,10 @@ private:
 
 
 public:
+    // virtual functions from base class
+    string get_name() const override;
+    string get_surname() const override;
+    
     // Constructors
     Student() : examMark(0) {};
     Student(const string& name, const string& surname, int examMark, const vector<int>& marks){
@@ -86,8 +91,8 @@ public:
 
 
     // Getter and Setter functions
-    inline string get_name() const {return name;};
-    inline string get_surname() const {return surname;};
+    // inline string get_name() const {return name;};
+    // inline string get_surname() const {return surname;};
     inline int get_examMark() const {return examMark;};
     inline vector<int> get_marks() const {return marks;};
 
