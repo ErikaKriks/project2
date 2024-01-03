@@ -27,18 +27,6 @@ Make sure you have the following software installed on your system:
         ```
 
 
-## Visual Studio Code Configuration
-
-If you are using Visual Studio Code to develop and run your C++ project, you may find the following configuration files useful:
-
-### tasks.json
-
-The `tasks.json` file in the `.vscode` directory defines build and other tasks for your project. If you've included this file in your project, you can find predefined tasks for building and running your program.
-
-### launch.json
-
-The `launch.json` file in the `.vscode` directory is used for configuring the debugger settings. It defines how VSCode should start and debug your program. If you've included this file in your project, you can find predefined configurations for debugging.
-
 ### How to Use
 
 1. **Building Your Project:**
@@ -60,19 +48,6 @@ Technical Specifications of Computer:
 
 
 ## Releases
-### [v.1.2](https://github.com/ErikaKriks/project2/tree/v.1.2)
-Script updated including Rule of Three and overwritten input/output methods.
-
-**Class Structure**
-* Private Members: Includes name, surname, examMark, marks, and public members for final marks.
-* Constructors: Default constructor and parameterized constructor for initializing member variables.
-* Rule of Three: Implements copy constructor, copy assignment operator, and a destructor.
-* Getter and Setter Methods: For accessing and modifying private members.
-* Other Methods: Includes add_mark() to add marks to the marks vector.
-
-**Additional Functionalities**
-* Overloaded Stream Operators: Implements operator<< and operator>> for customized input and output stream operations. Input method works manually, output prints students data to the terminal.
-
 
 ### [v.1.1](https://github.com/ErikaKriks/project2/tree/v.1.1)
 Script from previous exercise was adapted for the Class data structure.
@@ -120,8 +95,19 @@ Strategy 2 uses erase method, which is computationally expensive as it seems - O
 <br>Flag O3 performs best in both cases.
 
 
-### [v.1.2](https://github.com/ErikaKriks/project2/releases/tag/v.1.2)
-The Class Student updated according to Rule of Three requirements.
+### [v.1.2](https://github.com/ErikaKriks/project2/tree/v.1.2)
+Script updated including Rule of Three and overwritten input/output methods.
+
+**Class Structure**
+* Private Members: Includes name, surname, examMark, marks, and public members for final marks.
+* Constructors: Default constructor and parameterized constructor for initializing member variables.
+* Rule of Three: Implements copy constructor, copy assignment operator, and a destructor.
+* Getter and Setter Methods: For accessing and modifying private members.
+* Other Methods: Includes add_mark() to add marks to the marks vector.
+
+**Additional Functionalities**
+* Overloaded Stream Operators: Implements operator<< and operator>> for customized input and output stream operations. Input method works manually, output prints students data to the terminal.
+
 
 ### [v.1.5](https://github.com/ErikaKriks/project2/releases/tag/v.1.5)
 An abstract Class Person introduced.
