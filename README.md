@@ -111,3 +111,6 @@ Script updated including Rule of Three and overwritten input/output methods.
 
 ### [v.1.5](https://github.com/ErikaKriks/project2/releases/tag/v.1.5)
 An abstract Class Person introduced.
+
+### [v.2.0](https://github.com/ErikaKriks/project2/releases/tag/v.2.0)
+This release contains Doxygen documentation of the project additionally to all prior functionality.
