@@ -11,7 +11,7 @@ Make sure you have the following software installed on your system:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/your-repository.git
+   git clone https://github.com/ErikaKriks/project2.git
 
 2. **Open project in Visual Studio Code**
 3. **Install C/C++ Extension**
