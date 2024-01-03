@@ -48,6 +48,7 @@ Technical Specifications of Computer:
 
 
 ## Releases
+This project started as a project.
 
 ### [v.1.1](https://github.com/ErikaKriks/project2/tree/v.1.1)
 Script from previous exercise was adapted for the Class data structure.
