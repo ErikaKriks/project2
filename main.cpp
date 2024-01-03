@@ -23,11 +23,11 @@ int main() {
     Student s1("John", "Doe", 85, {90, 80, 75});
 
     // Create another instance using the copy constructor
-    Student s2 = s1;
+    Student s2(s1);
 
     // Modify s1 and s2
-    s1.add_mark(95);
-    s2.set_examMark(90);
+    // s1.add_mark(95);
+    // s2.set_examMark(90);
 
     // Use copy assignment
     Student s3;
