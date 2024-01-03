@@ -114,3 +114,7 @@ An abstract Class Person introduced.
 
 ### [v.2.0](https://github.com/ErikaKriks/project2/releases/tag/v.2.0)
 This release contains Doxygen documentation of the project additionally to all prior functionality.
+
+### [v.3.0](https://github.com/ErikaKriks/project2/releases/tag/v.3.0)
+This release contains dmg file for easier installation of the project.
+
