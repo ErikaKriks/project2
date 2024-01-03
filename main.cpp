@@ -30,8 +30,7 @@ int main() {
     // s2.set_examMark(90);
 
     // Use copy assignment
-    Student s3;
-    s3 = s1;
+    Student s3(s1);
     s3.set_examMark(30);
 
 
@@ -50,15 +49,15 @@ int main() {
 
     // Overwritten input/output methods
     // Input
-    std::cout << "Enter details for a new student:\n";
-    Student newStudent;
-    std::cin >> newStudent;
+    // std::cout << "Enter details for a new student:\n";
+    // Student newStudent;
+    // std::cin >> newStudent;
 
-    newStudent.finalMarkAvg = calculateFinalMarkAvg(newStudent);
-    newStudent.finalMarkMed = calculateFinalMarkMed(newStudent);
+    // newStudent.finalMarkAvg = calculateFinalMarkAvg(newStudent);
+    // newStudent.finalMarkMed = calculateFinalMarkMed(newStudent);
 
-    // Output
-    std::cout << "\nDetails of the new student:\n" << newStudent << "\n";
+    // // Output
+    // std::cout << "\nDetails of the new student:\n" << newStudent << "\n";
 
     // try {
     //     Person person("John", "Doe");
